@@ -1,0 +1,17 @@
+
+
+#IDE Files
+.vscode/
+
+dev_venv/
+sandbox_env/
+
+__pycache__/
+
+
+# Build Files
+dist/
+build/
+*.egg-info/
+*bat
+
