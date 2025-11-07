@@ -16,19 +16,27 @@ for frame_count_i in range(1, 100):
     canvas_width = column_count * feed_width
     canvas_height = row_count * feed_height
 
+    print(canvas_width)
+
     image = numpy.zeros((canvas_height, canvas_width, 3), dtype=numpy.uint8)
 
     for feed_i in range(frame_count_i):
         x = feed_i % column_count
         y = feed_i // column_count
 
+        print(x, y)
+
         # print(x, y)
 
         pt1 = numpy.array((x * feed_width, y * feed_height))
 
-        pt2 = ((x + 1) * feed_width, (y + 1) * feed_height)
+        print(pt1)
 
-        cv2.rectangle(image, pt1, pt2, (255, 0, 0), 5)
+        pt2 = pt1 + (feed_width, feed_height) - (1, 1)
+
+        print(pt2)
+
+        cv2.rectangle(image, pt1, pt2, (255, 255, 0), 1)
         cv2.putText(
             image,
             f"{feed_i}",
@@ -41,7 +49,7 @@ for frame_count_i in range(1, 100):
 
     print(f"({column_count},{row_count})")
 
-    cv2.imshow("Games", image)
+    cv2.imshow("Patchwork Canvas", image)
 
     key = cv2.waitKey(1) & 0xFF
 
